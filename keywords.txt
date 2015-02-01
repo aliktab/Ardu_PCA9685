@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+PCA9685	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+initialize	KEYWORD2
+get_channels_qty	KEYWORD2
+set_on_off	KEYWORD2
+set_PWM_8	KEYWORD2
+set_PWM_16	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+PCA9685_MD2_NONE	LITERAL1 
+PCA9685_MD2_INVRT	LITERAL1
+PCA9685_MD2_OCH		LITERAL1
+PCA9685_MD2_OUTDRV	LITERAL1
