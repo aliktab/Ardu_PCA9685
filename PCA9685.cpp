@@ -1,4 +1,6 @@
 /*
+  Copyright (C) 2014 Alik <aliktab@gmail.com> 
+
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
@@ -10,7 +12,7 @@
   Lesser General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <I2C.h>
