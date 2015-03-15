@@ -1,4 +1,4 @@
-Arduino Library for the PCA9685 chip.
+Arduino Library for the PCA9685 chip (used Arduino I2C Master Library).
 
 The PCA9685 is an I2C-bus controlled 16-channel LED controller optimized for LCD
 Red/Green/Blue/Amber (RGBA) color backlighting applications. Each LED output has its
