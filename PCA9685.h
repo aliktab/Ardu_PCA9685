@@ -33,8 +33,8 @@ public:
   // Create PCA9685 object and link it with specified I2C address.
   PCA9685(uint8_t _i2c_addr);
 
-  // Initialize PCA9685 with secon mode (PCA9685_MD2_) and PWM frequency.
-  void initialize(uint8_t _mode, float _freq);
+  // Initialize PCA9685 with second mode (PCA9685_MD2_) and PWM frequency.
+  bool initialize(uint8_t _mode, float _freq);
 
   // Returns channels quantity, supported by the board.
   uint8_t get_channels_qty() const;

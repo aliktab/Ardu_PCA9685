@@ -59,11 +59,12 @@ PCA9685::PCA9685(uint8_t _i2c_addr)
   m_i2c_addr = _i2c_addr;
 }
 
-void PCA9685::initialize(uint8_t _mode, float _freq)
+bool PCA9685::initialize(uint8_t _mode, float _freq)
 {
   const uint8_t prescale = floor(25000000.0 / (4096.0 * _freq) - 0.5);
   
-  I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)0x0);
+  if (I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)0x0))
+    return false;
 
   I2c.write(m_i2c_addr, PCA9685_MODE_1, PCA9685_MD1_SLEEP);
   I2c.write(m_i2c_addr, PCA9685_PRESCALE, prescale); 
@@ -72,6 +73,8 @@ void PCA9685::initialize(uint8_t _mode, float _freq)
 
   I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)(PCA9685_MD1_RESTART | PCA9685_MD1_AI | PCA9685_MD1_ALLCALL));  
   I2c.write(m_i2c_addr, PCA9685_MODE_2, _mode);
+
+  return true;
 }
 
 uint8_t PCA9685::get_channels_qty() const
