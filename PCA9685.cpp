@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2014 Alik <aliktab@gmail.com> 
+  Copyright (C) 2014 Alik <aliktab@gmail.com> All rights reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -62,16 +62,16 @@ PCA9685::PCA9685(uint8_t _i2c_addr)
 bool PCA9685::initialize(uint8_t _mode, float _freq)
 {
   const uint8_t prescale = floor(25000000.0 / (4096.0 * _freq) - 0.5);
-  
+
   if (I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)0x0))
     return false;
 
   I2c.write(m_i2c_addr, PCA9685_MODE_1, PCA9685_MD1_SLEEP);
-  I2c.write(m_i2c_addr, PCA9685_PRESCALE, prescale); 
+  I2c.write(m_i2c_addr, PCA9685_PRESCALE, prescale);
   I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)0x0);
   delay(PCA9685_WAKEUP_PAUSE);
 
-  I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)(PCA9685_MD1_RESTART | PCA9685_MD1_AI | PCA9685_MD1_ALLCALL));  
+  I2c.write(m_i2c_addr, PCA9685_MODE_1, (uint8_t)(PCA9685_MD1_RESTART | PCA9685_MD1_AI | PCA9685_MD1_ALLCALL));
   I2c.write(m_i2c_addr, PCA9685_MODE_2, _mode);
 
   return true;
@@ -82,7 +82,7 @@ uint8_t PCA9685::get_channels_qty() const
   return PCA9685_CHANNELS_QTY;
 }
 
-void PCA9685::set_on_off(uint8_t _channel, uint16_t _t_on, uint16_t _t_off) 
+void PCA9685::set_on_off(uint8_t _channel, uint16_t _t_on, uint16_t _t_off)
 {
   uint8_t Data[4] =
   {
@@ -96,8 +96,8 @@ void PCA9685::set_on_off(uint8_t _channel, uint16_t _t_on, uint16_t _t_off)
 void PCA9685::set_PWM_8(uint8_t _channel, uint8_t _duty_cycle)
 {
   set_on_off(
-      _channel, 
-      0, 
+      _channel,
+      0,
       (uint16_t)(((uint32_t)_duty_cycle * (uint32_t)PCA9685_MAX_TIME) / (uint32_t)UCHAR_MAX)
     );
 }
@@ -105,8 +105,8 @@ void PCA9685::set_PWM_8(uint8_t _channel, uint8_t _duty_cycle)
 void PCA9685::set_PWM_16(uint8_t _channel, uint16_t _duty_cycle)
 {
   set_on_off(
-      _channel, 
-      0, 
+      _channel,
+      0,
       (uint16_t)(((uint32_t)_duty_cycle * (uint32_t)PCA9685_MAX_TIME) / (uint32_t)USHRT_MAX)
     );
 }
